@@ -34,6 +34,25 @@
     }
   },
   {
+    "type": "binary_expr",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "expression",
+          "named": true
+        },
+        {
+          "type": "operator",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
     "type": "call",
     "named": true,
     "fields": {},
@@ -60,6 +79,10 @@
       "multiple": false,
       "required": true,
       "types": [
+        {
+          "type": "binary_expr",
+          "named": true
+        },
         {
           "type": "call",
           "named": true
@@ -111,6 +134,11 @@
   },
   {
     "type": "kind",
+    "named": true,
+    "fields": {}
+  },
+  {
+    "type": "operator",
     "named": true,
     "fields": {}
   },
@@ -172,7 +200,23 @@
     "named": false
   },
   {
+    "type": "*",
+    "named": false
+  },
+  {
+    "type": "+",
+    "named": false
+  },
+  {
     "type": ",",
+    "named": false
+  },
+  {
+    "type": "-",
+    "named": false
+  },
+  {
+    "type": "/",
     "named": false
   },
   {

@@ -1,6 +1,7 @@
+Sheet1!A2	FORMULA	5+10
 Sheet1!A2	FORMULA	5
 Sheet1!A2	FORMULA	A1
 Sheet1!A2	VALUE	6
-Sheet1!A1	FORMULA	sum(1,2, A2)
+Sheet1!A1	FORMULA	sum(1, 2 * A3, A2)
 Sheet1!A1	VALUE	6
 'Sheet Two'!A2	VALUE	10

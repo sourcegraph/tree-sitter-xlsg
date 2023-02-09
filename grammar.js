@@ -22,7 +22,11 @@ module.exports = grammar({
     formula: ($) => seq(alias("FORMULA", $.kind), "\t", $.expression, "\n"),
     value: (_) => prec(1, /[^\n]+/),
 
-    expression: ($) => prec(2, choice($.number, $.identifier, $.call)),
+    expression: ($) =>
+      prec(2, choice($.number, $.identifier, $.call, $.binary_expr)),
+    binary_expr: ($) =>
+      prec.right(3, seq($.expression, $.operator, $.expression)),
+    operator: (_) => choice("+", "-", "*", "/"),
     argument_list: ($) =>
       seq(
         "(",
