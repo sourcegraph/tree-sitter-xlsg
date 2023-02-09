@@ -1,0 +1,98 @@
+Fortune Companies!A1	VALUE	Rank
+Fortune Companies!B1	VALUE	Company
+Fortune Companies!C1	VALUE	Valuation (in million USD)
+Fortune Companies!A2	VALUE	1
+Fortune Companies!B2	VALUE	Apple
+Fortune Companies!C2	VALUE	2300000
+Fortune Companies!D2	FORMULA	sum(C:C)
+Fortune Companies!D2	VALUE	22800000
+Fortune Companies!A3	VALUE	2
+Fortune Companies!B3	VALUE	Microsoft
+Fortune Companies!C3	VALUE	2200000
+Fortune Companies!D3	FORMULA	C3*10
+Fortune Companies!D3	VALUE	22000000
+Fortune Companies!A4	VALUE	3
+Fortune Companies!B4	VALUE	Amazon
+Fortune Companies!C4	VALUE	1600000
+Fortune Companies!D4	FORMULA	C4
+Fortune Companies!D4	VALUE	1600000
+Fortune Companies!A5	VALUE	4
+Fortune Companies!B5	VALUE	Alphabet (Google)
+Fortune Companies!C5	VALUE	1500000
+Fortune Companies!D5	FORMULA	C5
+Fortune Companies!D5	VALUE	1500000
+Fortune Companies!A6	VALUE	5
+Fortune Companies!B6	VALUE	Facebook
+Fortune Companies!C6	VALUE	900000
+Fortune Companies!A7	VALUE	6
+Fortune Companies!B7	VALUE	Berkshire Hathaway
+Fortune Companies!C7	VALUE	900000
+Fortune Companies!A8	VALUE	7
+Fortune Companies!B8	VALUE	Tesla
+Fortune Companies!C8	VALUE	900000
+Fortune Companies!A9	VALUE	8
+Fortune Companies!B9	VALUE	Alibaba Group
+Fortune Companies!C9	VALUE	800000
+Fortune Companies!A10	VALUE	9
+Fortune Companies!B10	VALUE	Johnson & Johnson
+Fortune Companies!C10	VALUE	800000
+Fortune Companies!A11	VALUE	10
+Fortune Companies!B11	VALUE	Procter & Gamble
+Fortune Companies!C11	VALUE	700000
+Fortune Companies!A12	VALUE	11
+Fortune Companies!B12	VALUE	Exxon Mobil
+Fortune Companies!C12	VALUE	700000
+Fortune Companies!A13	VALUE	12
+Fortune Companies!B13	VALUE	Visa
+Fortune Companies!C13	VALUE	700000
+Fortune Companies!A14	VALUE	13
+Fortune Companies!B14	VALUE	JPMorgan Chase & Co.
+Fortune Companies!C14	VALUE	600000
+Fortune Companies!A15	VALUE	14
+Fortune Companies!B15	VALUE	Coca-Cola
+Fortune Companies!C15	VALUE	600000
+Fortune Companies!A16	VALUE	15
+Fortune Companies!B16	VALUE	Verizon Communications
+Fortune Companies!C16	VALUE	600000
+Fortune Companies!A17	VALUE	16
+Fortune Companies!B17	VALUE	Walmart
+Fortune Companies!C17	VALUE	500000
+Fortune Companies!A18	VALUE	17
+Fortune Companies!B18	VALUE	AT&T
+Fortune Companies!C18	VALUE	500000
+Fortune Companies!A19	VALUE	18
+Fortune Companies!B19	VALUE	Nestle
+Fortune Companies!C19	VALUE	500000
+Fortune Companies!A20	VALUE	19
+Fortune Companies!B20	VALUE	Pfizer
+Fortune Companies!C20	VALUE	500000
+Fortune Companies!A21	VALUE	20
+Fortune Companies!B21	VALUE	Intel
+Fortune Companies!C21	VALUE	500000
+Fortune Companies!A22	VALUE	21
+Fortune Companies!B22	VALUE	Merck & Co.
+Fortune Companies!C22	VALUE	500000
+Fortune Companies!A23	VALUE	22
+Fortune Companies!B23	VALUE	Walmart de México y Centroamérica
+Fortune Companies!C23	VALUE	500000
+Fortune Companies!A24	VALUE	23
+Fortune Companies!B24	VALUE	American Express
+Fortune Companies!C24	VALUE	500000
+Fortune Companies!A25	VALUE	24
+Fortune Companies!B25	VALUE	UnitedHealth Group
+Fortune Companies!C25	VALUE	500000
+Fortune Companies!A26	VALUE	25
+Fortune Companies!B26	VALUE	Novartis
+Fortune Companies!C26	VALUE	500000
+Fortune Companies!A27	VALUE	26
+Fortune Companies!B27	VALUE	Home Depot
+Fortune Companies!C27	VALUE	500000
+Fortune Companies!A28	VALUE	27
+Fortune Companies!B28	VALUE	Comcast
+Fortune Companies!C28	VALUE	500000
+Fortune Companies!A29	VALUE	28
+Fortune Companies!B29	VALUE	Cisco Systems
+Fortune Companies!C29	VALUE	500000
+Fortune Companies!A30	VALUE	29
+Fortune Companies!B30	VALUE	McDonald's
+Fortune Companies!C30	VALUE	500000
