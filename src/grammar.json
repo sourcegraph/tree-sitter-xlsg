@@ -1,0 +1,86 @@
+{
+  "name": "xlsg",
+  "rules": {
+    "file": {
+      "type": "REPEAT",
+      "content": {
+        "type": "SYMBOL",
+        "name": "row"
+      }
+    },
+    "row": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "SYMBOL",
+          "name": "address"
+        },
+        {
+          "type": "STRING",
+          "value": "\t"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "kind"
+        },
+        {
+          "type": "STRING",
+          "value": "\t"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "value"
+        },
+        {
+          "type": "STRING",
+          "value": "\n"
+        }
+      ]
+    },
+    "address": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "SYMBOL",
+          "name": "sheet"
+        },
+        {
+          "type": "STRING",
+          "value": "!"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "reference"
+        }
+      ]
+    },
+    "sheet": {
+      "type": "PATTERN",
+      "value": "[^!]+"
+    },
+    "reference": {
+      "type": "PATTERN",
+      "value": "[^\\t]+"
+    },
+    "kind": {
+      "type": "PATTERN",
+      "value": "[^\\t]+"
+    },
+    "value": {
+      "type": "PATTERN",
+      "value": "[^\\n]+"
+    }
+  },
+  "extras": [
+    {
+      "type": "PATTERN",
+      "value": "\\s"
+    }
+  ],
+  "conflicts": [],
+  "precedences": [],
+  "externals": [],
+  "inline": [],
+  "supertypes": []
+}
+
