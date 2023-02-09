@@ -10,12 +10,17 @@ Companies!D2	COMMENT	Sum of all valuations  -Olaf Geirsson
 Companies!A3	VALUE	2
 Companies!B3	VALUE	Microsoft
 Companies!C3	VALUE	2200000
+Companies!D3	FORMULA	Table1[[#This Row],[Valuation (in million USD)]]
 Companies!A4	VALUE	3
 Companies!B4	VALUE	Amazon
 Companies!C4	VALUE	1600000
+Companies!D4	FORMULA	C3
+Companies!D4	VALUE	2200000
 Companies!A5	VALUE	4
 Companies!B5	VALUE	Alphabet (Google)
 Companies!C5	VALUE	1500000
+Companies!D5	FORMULA	C3*10
+Companies!D5	VALUE	22000000
 Companies!A6	VALUE	5
 Companies!B6	VALUE	Facebook
 Companies!C6	VALUE	900000
