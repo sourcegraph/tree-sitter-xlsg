@@ -12,9 +12,9 @@
 #define ALIAS_COUNT 1
 #define TOKEN_COUNT 13
 #define EXTERNAL_TOKEN_COUNT 0
-#define FIELD_COUNT 1
+#define FIELD_COUNT 0
 #define MAX_ALIAS_SEQUENCE_LENGTH 6
-#define PRODUCTION_ID_COUNT 3
+#define PRODUCTION_ID_COUNT 2
 
 enum {
   anon_sym_TAB = 1,
@@ -51,7 +51,7 @@ static const char * const ts_symbol_names[] = {
   [sym_sheet] = "sheet",
   [aux_sym_reference_token1] = "reference_token1",
   [anon_sym_LF] = "\n",
-  [anon_sym_FORMULA] = "FORMULA",
+  [anon_sym_FORMULA] = "kind",
   [aux_sym_value_token1] = "value_token1",
   [anon_sym_LPAREN] = "(",
   [anon_sym_COMMA] = ",",
@@ -80,7 +80,7 @@ static const TSSymbol ts_symbol_map[] = {
   [sym_sheet] = sym_sheet,
   [aux_sym_reference_token1] = aux_sym_reference_token1,
   [anon_sym_LF] = anon_sym_LF,
-  [anon_sym_FORMULA] = anon_sym_FORMULA,
+  [anon_sym_FORMULA] = sym_kind,
   [aux_sym_value_token1] = aux_sym_value_token1,
   [anon_sym_LPAREN] = anon_sym_LPAREN,
   [anon_sym_COMMA] = anon_sym_COMMA,
@@ -129,7 +129,7 @@ static const TSSymbolMetadata ts_symbol_metadata[] = {
   },
   [anon_sym_FORMULA] = {
     .visible = true,
-    .named = false,
+    .named = true,
   },
   [aux_sym_value_token1] = {
     .visible = false,
@@ -207,24 +207,6 @@ static const TSSymbolMetadata ts_symbol_metadata[] = {
     .visible = true,
     .named = true,
   },
-};
-
-enum {
-  field_kind = 1,
-};
-
-static const char * const ts_field_names[] = {
-  [0] = NULL,
-  [field_kind] = "kind",
-};
-
-static const TSFieldMapSlice ts_field_map_slices[PRODUCTION_ID_COUNT] = {
-  [2] = {.index = 0, .length = 1},
-};
-
-static const TSFieldMapEntry ts_field_map_entries[] = {
-  [0] =
-    {field_kind, 0},
 };
 
 static const TSSymbol ts_alias_sequences[PRODUCTION_ID_COUNT][MAX_ALIAS_SEQUENCE_LENGTH] = {
@@ -780,7 +762,7 @@ static const TSParseActionEntry ts_parse_actions[] = {
   [47] = {.entry = {.count = 1, .reusable = true}}, REDUCE(sym_argument_list, 3),
   [49] = {.entry = {.count = 1, .reusable = true}}, REDUCE(sym_argument_list, 2),
   [51] = {.entry = {.count = 1, .reusable = true}}, REDUCE(sym_call, 2, .production_id = 1),
-  [53] = {.entry = {.count = 1, .reusable = true}}, REDUCE(sym_formula, 4, .production_id = 2),
+  [53] = {.entry = {.count = 1, .reusable = true}}, REDUCE(sym_formula, 4),
   [55] = {.entry = {.count = 1, .reusable = true}}, REDUCE(sym_row, 6),
   [57] = {.entry = {.count = 1, .reusable = true}}, SHIFT(26),
   [59] = {.entry = {.count = 1, .reusable = true}}, SHIFT(30),
@@ -822,9 +804,6 @@ extern const TSLanguage *tree_sitter_xlsg(void) {
     .small_parse_table_map = ts_small_parse_table_map,
     .parse_actions = ts_parse_actions,
     .symbol_names = ts_symbol_names,
-    .field_names = ts_field_names,
-    .field_map_slices = ts_field_map_slices,
-    .field_map_entries = ts_field_map_entries,
     .symbol_metadata = ts_symbol_metadata,
     .public_symbol_map = ts_symbol_map,
     .alias_map = ts_non_terminal_alias_map,

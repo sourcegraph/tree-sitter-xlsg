@@ -93,24 +93,17 @@
   {
     "type": "formula",
     "named": true,
-    "fields": {
-      "kind": {
-        "multiple": false,
-        "required": true,
-        "types": [
-          {
-            "type": "FORMULA",
-            "named": false
-          }
-        ]
-      }
-    },
+    "fields": {},
     "children": {
-      "multiple": false,
+      "multiple": true,
       "required": true,
       "types": [
         {
           "type": "expression",
+          "named": true
+        },
+        {
+          "type": "kind",
           "named": true
         }
       ]
@@ -180,10 +173,6 @@
   },
   {
     "type": ",",
-    "named": false
-  },
-  {
-    "type": "FORMULA",
     "named": false
   },
   {

@@ -96,12 +96,13 @@
       "type": "SEQ",
       "members": [
         {
-          "type": "FIELD",
-          "name": "kind",
+          "type": "ALIAS",
           "content": {
             "type": "STRING",
             "value": "FORMULA"
-          }
+          },
+          "named": true,
+          "value": "kind"
         },
         {
           "type": "STRING",

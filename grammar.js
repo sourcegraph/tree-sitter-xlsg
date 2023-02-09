@@ -19,7 +19,7 @@ module.exports = grammar({
 
     unstructured: ($) => seq($.kind, "\t", $.value, "\n"),
 
-    formula: ($) => seq(field("kind", "FORMULA"), "\t", $.expression, "\n"),
+    formula: ($) => seq(alias("FORMULA", $.kind), "\t", $.expression, "\n"),
     value: (_) => prec(1, /[^\n]+/),
 
     expression: ($) => prec(2, choice($.number, $.identifier, $.call)),
