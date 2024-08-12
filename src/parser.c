@@ -1,11 +1,10 @@
-#include <tree_sitter/parser.h>
+#include "tree_sitter/parser.h"
 
 #if defined(__GNUC__) || defined(__clang__)
-#pragma GCC diagnostic push
 #pragma GCC diagnostic ignored "-Wmissing-field-initializers"
 #endif
 
-#define LANGUAGE_VERSION 13
+#define LANGUAGE_VERSION 14
 #define STATE_COUNT 40
 #define LARGE_STATE_COUNT 2
 #define SYMBOL_COUNT 31
@@ -16,7 +15,7 @@
 #define MAX_ALIAS_SEQUENCE_LENGTH 6
 #define PRODUCTION_ID_COUNT 2
 
-enum {
+enum ts_symbol_identifiers {
   anon_sym_TAB = 1,
   anon_sym_BANG = 2,
   sym_sheet = 3,
@@ -262,6 +261,49 @@ static const uint16_t ts_non_terminal_alias_map[] = {
   0,
 };
 
+static const TSStateId ts_primary_state_ids[STATE_COUNT] = {
+  [0] = 0,
+  [1] = 1,
+  [2] = 2,
+  [3] = 3,
+  [4] = 4,
+  [5] = 5,
+  [6] = 6,
+  [7] = 7,
+  [8] = 8,
+  [9] = 9,
+  [10] = 10,
+  [11] = 11,
+  [12] = 12,
+  [13] = 13,
+  [14] = 14,
+  [15] = 15,
+  [16] = 16,
+  [17] = 17,
+  [18] = 18,
+  [19] = 19,
+  [20] = 20,
+  [21] = 21,
+  [22] = 22,
+  [23] = 23,
+  [24] = 24,
+  [25] = 25,
+  [26] = 26,
+  [27] = 27,
+  [28] = 28,
+  [29] = 29,
+  [30] = 30,
+  [31] = 31,
+  [32] = 32,
+  [33] = 33,
+  [34] = 34,
+  [35] = 35,
+  [36] = 36,
+  [37] = 37,
+  [38] = 38,
+  [39] = 39,
+};
+
 static bool ts_lex(TSLexer *lexer, TSStateId state) {
   START_LEXER();
   eof = lexer->eof(lexer);
@@ -270,7 +312,7 @@ static bool ts_lex(TSLexer *lexer, TSStateId state) {
       if (eof) ADVANCE(6);
       if (lookahead == '\t') ADVANCE(7);
       if (lookahead == '\n') ADVANCE(20);
-      if (lookahead == ' ') SKIP(0)
+      if (lookahead == ' ') SKIP(0);
       if (lookahead == '!') ADVANCE(8);
       if (lookahead == '(') ADVANCE(29);
       if (lookahead == ')') ADVANCE(31);
@@ -285,7 +327,7 @@ static bool ts_lex(TSLexer *lexer, TSStateId state) {
           ('a' <= lookahead && lookahead <= 'z')) ADVANCE(39);
       END_STATE();
     case 1:
-      if (lookahead == ' ') SKIP(1)
+      if (lookahead == ' ') SKIP(1);
       if (lookahead == ')') ADVANCE(31);
       if (('0' <= lookahead && lookahead <= '9')) ADVANCE(32);
       if (('A' <= lookahead && lookahead <= 'Z') ||
@@ -311,6 +353,7 @@ static bool ts_lex(TSLexer *lexer, TSStateId state) {
       if (eof) ADVANCE(6);
       if (lookahead == ' ') ADVANCE(9);
       if (lookahead != 0 &&
+          lookahead != ' ' &&
           lookahead != '!') ADVANCE(10);
       END_STATE();
     case 6:
@@ -326,6 +369,7 @@ static bool ts_lex(TSLexer *lexer, TSStateId state) {
       ACCEPT_TOKEN(sym_sheet);
       if (lookahead == ' ') ADVANCE(9);
       if (lookahead != 0 &&
+          lookahead != ' ' &&
           lookahead != '!') ADVANCE(10);
       END_STATE();
     case 10:
@@ -886,47 +930,47 @@ static const uint32_t ts_small_parse_table_map[] = {
 static const TSParseActionEntry ts_parse_actions[] = {
   [0] = {.entry = {.count = 0, .reusable = false}},
   [1] = {.entry = {.count = 1, .reusable = false}}, RECOVER(),
-  [3] = {.entry = {.count = 1, .reusable = true}}, REDUCE(sym_file, 0),
+  [3] = {.entry = {.count = 1, .reusable = true}}, REDUCE(sym_file, 0, 0, 0),
   [5] = {.entry = {.count = 1, .reusable = true}}, SHIFT(32),
-  [7] = {.entry = {.count = 1, .reusable = true}}, REDUCE(sym_expression, 1),
+  [7] = {.entry = {.count = 1, .reusable = true}}, REDUCE(sym_expression, 1, 0, 0),
   [9] = {.entry = {.count = 1, .reusable = true}}, SHIFT(12),
-  [11] = {.entry = {.count = 1, .reusable = true}}, REDUCE(sym_binary_expr, 3),
+  [11] = {.entry = {.count = 1, .reusable = true}}, REDUCE(sym_binary_expr, 3, 0, 0),
   [13] = {.entry = {.count = 1, .reusable = true}}, SHIFT(25),
   [15] = {.entry = {.count = 1, .reusable = true}}, SHIFT(13),
   [17] = {.entry = {.count = 1, .reusable = true}}, SHIFT(5),
-  [19] = {.entry = {.count = 1, .reusable = true}}, REDUCE(sym_argument_list, 3),
-  [21] = {.entry = {.count = 1, .reusable = true}}, REDUCE(sym_argument_list, 5),
-  [23] = {.entry = {.count = 1, .reusable = true}}, REDUCE(aux_sym_argument_list_repeat1, 2),
-  [25] = {.entry = {.count = 1, .reusable = true}}, REDUCE(sym_argument_list, 4),
-  [27] = {.entry = {.count = 1, .reusable = true}}, REDUCE(sym_argument_list, 2),
-  [29] = {.entry = {.count = 1, .reusable = true}}, REDUCE(sym_call, 2, .production_id = 1),
+  [19] = {.entry = {.count = 1, .reusable = true}}, REDUCE(sym_argument_list, 3, 0, 0),
+  [21] = {.entry = {.count = 1, .reusable = true}}, REDUCE(sym_argument_list, 5, 0, 0),
+  [23] = {.entry = {.count = 1, .reusable = true}}, REDUCE(aux_sym_argument_list_repeat1, 2, 0, 0),
+  [25] = {.entry = {.count = 1, .reusable = true}}, REDUCE(sym_argument_list, 4, 0, 0),
+  [27] = {.entry = {.count = 1, .reusable = true}}, REDUCE(sym_argument_list, 2, 0, 0),
+  [29] = {.entry = {.count = 1, .reusable = true}}, REDUCE(sym_call, 2, 0, 1),
   [31] = {.entry = {.count = 1, .reusable = true}}, SHIFT(9),
   [33] = {.entry = {.count = 1, .reusable = true}}, SHIFT(11),
   [35] = {.entry = {.count = 1, .reusable = true}}, SHIFT(2),
   [37] = {.entry = {.count = 1, .reusable = true}}, SHIFT(8),
   [39] = {.entry = {.count = 1, .reusable = true}}, SHIFT(24),
   [41] = {.entry = {.count = 1, .reusable = true}}, SHIFT(6),
-  [43] = {.entry = {.count = 1, .reusable = true}}, REDUCE(sym_file, 1),
-  [45] = {.entry = {.count = 1, .reusable = true}}, REDUCE(aux_sym_file_repeat1, 2),
-  [47] = {.entry = {.count = 2, .reusable = true}}, REDUCE(aux_sym_file_repeat1, 2), SHIFT_REPEAT(32),
+  [43] = {.entry = {.count = 1, .reusable = true}}, REDUCE(sym_file, 1, 0, 0),
+  [45] = {.entry = {.count = 1, .reusable = true}}, REDUCE(aux_sym_file_repeat1, 2, 0, 0),
+  [47] = {.entry = {.count = 2, .reusable = true}}, REDUCE(aux_sym_file_repeat1, 2, 0, 0), SHIFT_REPEAT(32),
   [50] = {.entry = {.count = 1, .reusable = false}}, SHIFT(36),
   [52] = {.entry = {.count = 1, .reusable = false}}, SHIFT(35),
-  [54] = {.entry = {.count = 2, .reusable = true}}, REDUCE(aux_sym_argument_list_repeat1, 2), SHIFT_REPEAT(19),
+  [54] = {.entry = {.count = 2, .reusable = true}}, REDUCE(aux_sym_argument_list_repeat1, 2, 0, 0), SHIFT_REPEAT(19),
   [57] = {.entry = {.count = 1, .reusable = true}}, SHIFT(15),
-  [59] = {.entry = {.count = 1, .reusable = true}}, REDUCE(sym_formula, 4),
-  [61] = {.entry = {.count = 1, .reusable = true}}, REDUCE(sym_operator, 1),
+  [59] = {.entry = {.count = 1, .reusable = true}}, REDUCE(sym_formula, 4, 0, 0),
+  [61] = {.entry = {.count = 1, .reusable = true}}, REDUCE(sym_operator, 1, 0, 0),
   [63] = {.entry = {.count = 1, .reusable = true}}, SHIFT(33),
-  [65] = {.entry = {.count = 1, .reusable = true}}, REDUCE(sym_row, 6),
-  [67] = {.entry = {.count = 1, .reusable = true}}, REDUCE(sym_row, 3),
+  [65] = {.entry = {.count = 1, .reusable = true}}, REDUCE(sym_row, 6, 0, 0),
+  [67] = {.entry = {.count = 1, .reusable = true}}, REDUCE(sym_row, 3, 0, 0),
   [69] = {.entry = {.count = 1, .reusable = true}}, SHIFT(37),
-  [71] = {.entry = {.count = 1, .reusable = true}}, REDUCE(sym_address, 3),
+  [71] = {.entry = {.count = 1, .reusable = true}}, REDUCE(sym_address, 3, 0, 0),
   [73] = {.entry = {.count = 1, .reusable = true}}, SHIFT(27),
   [75] = {.entry = {.count = 1, .reusable = true}}, SHIFT(29),
-  [77] = {.entry = {.count = 1, .reusable = true}}, REDUCE(sym_value, 1),
+  [77] = {.entry = {.count = 1, .reusable = true}}, REDUCE(sym_value, 1, 0, 0),
   [79] = {.entry = {.count = 1, .reusable = true}}, SHIFT(26),
   [81] = {.entry = {.count = 1, .reusable = true}}, SHIFT(17),
-  [83] = {.entry = {.count = 1, .reusable = true}}, REDUCE(sym_kind, 1),
-  [85] = {.entry = {.count = 1, .reusable = true}}, REDUCE(sym_reference, 1),
+  [83] = {.entry = {.count = 1, .reusable = true}}, REDUCE(sym_kind, 1, 0, 0),
+  [85] = {.entry = {.count = 1, .reusable = true}}, REDUCE(sym_reference, 1, 0, 0),
   [87] = {.entry = {.count = 1, .reusable = true}}, SHIFT(21),
   [89] = {.entry = {.count = 1, .reusable = true}},  ACCEPT_INPUT(),
 };
@@ -934,11 +978,15 @@ static const TSParseActionEntry ts_parse_actions[] = {
 #ifdef __cplusplus
 extern "C" {
 #endif
-#ifdef _WIN32
-#define extern __declspec(dllexport)
+#ifdef TREE_SITTER_HIDE_SYMBOLS
+#define TS_PUBLIC
+#elif defined(_WIN32)
+#define TS_PUBLIC __declspec(dllexport)
+#else
+#define TS_PUBLIC __attribute__((visibility("default")))
 #endif
 
-extern const TSLanguage *tree_sitter_xlsg(void) {
+TS_PUBLIC const TSLanguage *tree_sitter_xlsg(void) {
   static const TSLanguage language = {
     .version = LANGUAGE_VERSION,
     .symbol_count = SYMBOL_COUNT,
@@ -961,6 +1009,7 @@ extern const TSLanguage *tree_sitter_xlsg(void) {
     .alias_sequences = &ts_alias_sequences[0][0],
     .lex_modes = ts_lex_modes,
     .lex_fn = ts_lex,
+    .primary_state_ids = ts_primary_state_ids,
   };
   return &language;
 }
